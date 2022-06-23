@@ -4,7 +4,8 @@ const basePath = process.cwd();
 const { NETWORK } = require(`${basePath}/constants/network.js`);
 const fs = require("fs");
 const path = require("path");
-const { token } = require('./secret');
+var secrets = require('./secret.json');
+
 
 fs.readFileSync(`${basePath}/build/images`).forEach((file) => {
     const formData = new FormData();

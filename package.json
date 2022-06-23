@@ -1,7 +1,7 @@
 {
-  "name": "hashlips_art_engine",
-  "version": "1.1.1",
-  "description": "HashLips Art Engine is a tool used to create multiple different instances of artworks based on provided layers.",
+  "name": "avbear_generation", 
+  "version": "0.0.1",
+  "description": "AVBEAR generation tool using the HashLips Art Engine to create multiple different instances of artworks based on provided layers.",
   "main": "index.js",
   "bin": "index.js",
   "pkg": {
@@ -20,13 +20,13 @@
     "update_info": "node utils/update_info.js",
     "preview_gif": "node utils/preview_gif.js"
   },
-  "author": "Daniel Eugene Botha (HashLips)",
+  "author": "Angelina Tsuboi",
   "license": "MIT",
   "dependencies": {
     "canvas": "^2.8.0",
     "form-data": "^4.0.0",
     "gif-encoder-2": "^1.0.5",
-    "node-fetch": "^3.2.6",
+    "node-fetch": "2.6.1",
     "sha1": "^1.1.1"
   }
 }

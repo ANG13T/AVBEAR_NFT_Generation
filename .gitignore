@@ -141,4 +141,4 @@ dist
 
 .DS_Store
 
-/utils/nftport/secret.js
+/utils/nftport/secret.json
