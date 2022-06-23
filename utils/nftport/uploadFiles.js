@@ -6,8 +6,7 @@ const fs = require("fs");
 const path = require("path");
 var secrets = require('./secret.json');
 
-
-fs.readFileSync(`${basePath}/build/images`).forEach((file) => {
+fs.readdirSync(`${basePath}/build/images`).forEach((file) => {
     const formData = new FormData();
     const fileStream = fs.createReadStream(`${basePath}/build/images/${file}`);
     formData.append('file', fileStream);
@@ -16,7 +15,7 @@ fs.readFileSync(`${basePath}/build/images`).forEach((file) => {
     let options = {
         method: 'POST',
         headers: {
-            Authorization: token
+            Authorization: secrets.token
         },
         body: formData
     };
