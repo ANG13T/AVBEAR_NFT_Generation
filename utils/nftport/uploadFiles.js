@@ -1,39 +1,64 @@
-const FormData = require('form-data');
-const fetch = require('node-fetch');
-const basePath = process.cwd();
-const { NETWORK } = require(`${basePath}/constants/network.js`);
-const fs = require("fs");
+const FormData = require("form-data");
 const path = require("path");
-var secrets = require('./secret.json');
+const basePath = process.cwd();
+const fs = require("fs");
 
-fs.readdirSync(`${basePath}/build/images`).forEach((file) => {
-    const formData = new FormData();
-    const fileStream = fs.createReadStream(`${basePath}/build/images/${file}`);
-    formData.append('file', fileStream);
-    let url = 'https://api.nftport.xyz/v0/files';
+const { RateLimit } = require('async-sema');
+const { fetchWithRetry } = require(`${basePath}/utils/functions/fetchWithRetry.js`);
 
-    let options = {
-        method: 'POST',
-        headers: {
-            Authorization: secrets.token
-        },
-        body: formData
-    };
+const _limit = RateLimit(3125);
 
-    options.body = formData;
+const allMetadata = [];
+const regex = new RegExp("^([0-9]+).png");
 
-    fetch(url, options)
-        .then(res => res.json())
-        .then(json => {
-            const fileName = path.parse(json.file_name).name;
-            let rawdata = fs.readFileSync(`${basePath}/build/json/${fileName}.json`);
-            let metaData = JSON.parse(rawdata);
-            metaData.file_url = json.ipfs_url;
-            fs.writeFileSync(`${basePath}/build/json/${fileName}.json`, JSON.stringify(metaData, null, 2));
-            console.log(`Uploaded ${json.file_name} | Updated ${fileName}.json`)
-        })
-        .catch(err => console.error('error:' + err));
-})
+async function main() {
+  console.log("Starting upload of images...");
+  const files = fs.readdirSync(`${basePath}/build/images`);
+  files.sort(function(a, b){
+    return a.split(".")[0] - b.split(".")[0];
+  });
+  for (const file of files) {
+    try {
+      if (regex.test(file)) {
+        const fileName = path.parse(file).name;
+        let jsonFile = fs.readFileSync(`${basePath}/build/json/${fileName}.json`);
+        let metaData = JSON.parse(jsonFile);
 
+        if(!metaData.file_url.includes('https://')) {
+          await _limit()
+          const url = "https://api.nftport.xyz/v0/files";
+          const formData = new FormData();
+          const fileStream = fs.createReadStream(`${basePath}/build/images/${file}`);
+          formData.append("file", fileStream);
+          const options = {
+            method: "POST",
+            headers: {},
+            body: formData,
+          };
+          const response = await fetchWithRetry(url, options);
+          metaData.file_url = response.ipfs_url;
+          metaData.image = response.ipfs_url;
 
+          fs.writeFileSync(
+            `${basePath}/build/json/${fileName}.json`,
+            JSON.stringify(metaData, null, 2)
+          );
+          console.log(`${response.file_name} uploaded & ${fileName}.json updated!`);
+        } else {
+          console.log(`${fileName} already uploaded.`);
+        }
 
+        allMetadata.push(metaData);
+      }
+    } catch (error) {
+      console.log(`Catch: ${error}`);
+    }
+  }
+
+  fs.writeFileSync(
+    `${basePath}/build/json/_metadata.json`,
+    JSON.stringify(allMetadata, null, 2)
+  );
+}
+
+main();
