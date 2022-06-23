@@ -1,6 +1,7 @@
 const basePath = process.cwd();
 const { MODE } = require(`${basePath}/constants/blend_mode.js`);
 const { NETWORK } = require(`${basePath}/constants/network.js`);
+const { token } = require('../utils/nftport/secret.json');
 
 const network = NETWORK.eth;
 
@@ -8,6 +9,8 @@ const network = NETWORK.eth;
 const namePrefix = "Aviation Bears";
 const description = "Bears that belong in the sky!";
 const baseUri = "ipfs://NewUriToReplace";
+
+const AUTH = token
 
 const solanaMetadata = {
   symbol: "YC",
@@ -118,4 +121,5 @@ module.exports = {
   solanaMetadata,
   gif,
   preview_gif,
+  AUTH
 };
