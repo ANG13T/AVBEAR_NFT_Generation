@@ -131,7 +131,7 @@ const addMetadata = (_dna, _edition) => {
     name: `${namePrefix} #${_edition}`,
     description: description,
     file_url: `${baseUri}/${_edition}.png`,
-    customization: {
+    custom_fields: {
       dna: sha1(_dna),
       edition: _edition,
       date: dateTime,
@@ -305,7 +305,7 @@ const writeMetaData = (_data) => {
 };
 
 const saveMetaDataSingleFile = (_editionCount) => {
-  let metadata = metadataList.find((meta) => meta.customization.edition == _editionCount);
+  let metadata = metadataList.find((meta) => meta.custom_fields.edition == _editionCount);
   debugLogs
     ? console.log(
         `Writing metadata for ${_editionCount}: ${JSON.stringify(metadata)}`

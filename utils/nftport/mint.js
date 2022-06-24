@@ -43,7 +43,7 @@ async function main() {
   process.exit(0);
 
   for (const meta of ipfsMetas) {
-    const edition = meta.customization.edition;
+    const edition = meta.custom_fields.edition;
     if (START && END) {
       if (edition < START || edition > END) {
         continue;

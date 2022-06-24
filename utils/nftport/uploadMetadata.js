@@ -29,7 +29,7 @@ async function main() {
     if (regex.test(file)) {
       let jsonFile = fs.readFileSync(`${readDir}/${file}`);
       let metaData = JSON.parse(jsonFile);
-      const uploadedMeta = `${writeDir}/${metaData.customization.edition}.json`;
+      const uploadedMeta = `${writeDir}/${metaData.custom_fields.edition}.json`;
 
       try {
         fs.accessSync(uploadedMeta);
