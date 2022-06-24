@@ -39,8 +39,11 @@ async function main() {
 
   const ipfsMetas = JSON.parse(fs.readFileSync(ipfsMetasFile));
 
+  console.log("IPFS metas", ipfsMetas[0]);
+  process.exit(0);
+
   for (const meta of ipfsMetas) {
-    const edition = meta.custom_fields.edition;
+    const edition = meta.customization.edition;
     if (START && END) {
       if (edition < START || edition > END) {
         continue;
