@@ -12,6 +12,10 @@ const baseUri = "ipfs://NewUriToReplace";
 
 const AUTH = token
 
+const CHAIN = "rinkeby"
+const CONTRACT_ADDRESS = "ipfs://bafkreifn5gwx6arzb4mfojk5usmioyzvlt5c55g7gnwnpgi4gj6rb7oczm"
+const MINT_TO_ADDRESS = "0xa95EBc8576842a8DAD740A0a122D35c8C4E62180"
+
 const solanaMetadata = {
   symbol: "YC",
   seller_fee_basis_points: 1000, // Define how much % you want from secondary market sales 1000 = 10%
@@ -121,5 +125,8 @@ module.exports = {
   solanaMetadata,
   gif,
   preview_gif,
-  AUTH
+  AUTH,
+  CHAIN,
+  CONTRACT_ADDRESS,
+  MINT_TO_ADDRESS
 };

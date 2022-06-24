@@ -16,14 +16,11 @@ const {
 const {
   CONTRACT_ADDRESS,
   MINT_TO_ADDRESS,
-  CHAIN,
-  GENERIC,
+  CHAIN
 } = require(`${basePath}/src/config.js`);
 const _limit = RateLimit(1); // Currently, minting is limited to 1/second.
 
-const ipfsMetasFile = GENERIC
-  ? `${basePath}/build/ipfsMetasGeneric/_ipfsMetas.json`
-  : `${basePath}/build/ipfsMetas/_ipfsMetas.json`;
+const ipfsMetasFile = `${basePath}/build/ipfsMetas/_ipfsMetas.json`;
 
 async function main() {
   const ok = await yesno({
