@@ -39,9 +39,6 @@ async function main() {
 
   const ipfsMetas = JSON.parse(fs.readFileSync(ipfsMetasFile));
 
-  console.log("IPFS metas", ipfsMetas[0]);
-  process.exit(0);
-
   for (const meta of ipfsMetas) {
     const edition = meta.custom_fields.edition;
     if (START && END) {
@@ -59,8 +56,10 @@ async function main() {
     try {
       fs.accessSync(mintFile);
       const mintedFile = fs.readFileSync(mintFile);
+      console.log("minted file", mintedFile)
       if (mintedFile.length > 0) {
         const mintedMeta = JSON.parse(mintedFile);
+        console.log("meta", mintedMeta, mintedFile)
         if (mintedMeta.mintData.response !== "OK") {
           console.log(
             `Response: ${mintedMeta.mintData.response}`,
@@ -115,6 +114,7 @@ async function main() {
           },
           body: JSON.stringify(mintInfo),
         };
+        console.log("hi", url, options)
         let mintData = await fetchWithRetry(url, options);
         const combinedData = {
           metaData: meta,
