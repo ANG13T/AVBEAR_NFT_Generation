@@ -8,19 +8,17 @@
 </p>
 <br/>
 
-All the code in these repos was created and explained by HashLips on the main YouTube channel.
+Aviation Bears (AVBEAR) is a NFT collection consisting of 100 unique NFTs uploaded onto OpenSea. This script is capable of generating 3125 unique bears, but due to price restrictions the number of bears available is 100. The NFTs are currently uploaded onto the Rinkeby chain using the Hashlips art engine. 
 
-To find out more please visit:
+Buy an AVBEAR 🐻:
 
-[📺 YouTube](https://www.youtube.com/channel/UC1LV4_VQGBJHTJjEWUmy8nA)
+[OpenSea]([https://www.youtube.com/channel/UC1LV4_VQGBJHTJjEWUmy8nA](https://testnets.opensea.io/collection/aviation-bears))
 
 
 ## Installation and Scripts 🛠️
 
-If you are cloning the project then run this first, otherwise you can download the source code on the release page and skip this step.
-
 ```sh
-git clone https://github.com/HashLips/hashlips_art_engine.git
+git clone [https://github.com/HashLips/hashlips_art_engine.git](https://github.com/angelina-tsuboi/AVBEAR_NFT_Generation.git)
 ```
 
 Go to the root of your folder and run this command if you have yarn installed.
