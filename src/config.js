@@ -14,7 +14,7 @@ const AUTH = token
 
 const CHAIN = "rinkeby"
 const CONTRACT_ADDRESS = "0x2Ed40DF8A93b0e3748FCcCC1B5ad5B0C410fEbcB"
-const MINT_TO_ADDRESS = "0xa95EBc8576842a8DAD740A0a122D35c8C4E62180"
+const MINT_TO_ADDRESS = "0x7a88bA09980a20b2faAc772dBDd95f3B0b28101E"
 
 const solanaMetadata = {
   symbol: "YC",

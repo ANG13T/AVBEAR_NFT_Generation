@@ -37,7 +37,8 @@ async function main() {
     fs.mkdirSync(path.join(`${basePath}/build`, "minted"));
   }
 
-  const ipfsMetas = JSON.parse(fs.readFileSync(ipfsMetasFile));
+  var ipfsMetas = JSON.parse(fs.readFileSync(ipfsMetasFile));
+  ipfsMetas = ipfsMetas.slice(100);
 
   for (const meta of ipfsMetas) {
     const edition = meta.custom_fields.edition;
@@ -56,7 +57,6 @@ async function main() {
     try {
       fs.accessSync(mintFile);
       const mintedFile = fs.readFileSync(mintFile);
-      console.log("minted file", mintedFile)
       if (mintedFile.length > 0) {
         const mintedMeta = JSON.parse(mintedFile);
         console.log("meta", mintedMeta, mintedFile)
@@ -114,7 +114,7 @@ async function main() {
           },
           body: JSON.stringify(mintInfo),
         };
-        console.log("hi", url, options)
+        
         let mintData = await fetchWithRetry(url, options);
         const combinedData = {
           metaData: meta,
