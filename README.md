@@ -13,7 +13,7 @@ Aviation Bears (AVBEAR) is a NFT collection consisting of 100 unique NFTs upload
 <h2 align="center"><a href="https://testnets.opensea.io/collection/aviation-bears" target="_blank">🐻 Buy an AVBEAR on OpenSea 🐻</a></h2>
 
 
-## Installation and Scripts 🛠️
+## Installation 📁
 
 ```sh
 git clone https://github.com/angelina-tsuboi/AVBEAR_NFT_Generation.git
@@ -31,7 +31,7 @@ Alternatively you can run this command if you have node installed.
 npm install
 ```
 
-### Scripts 
+## Scripts 🛠
 To generate AVBEARs, execute the following command sequentially inside the root directory of the project
 #### 1. **main.js**
 ```sh
