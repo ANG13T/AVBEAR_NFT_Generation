@@ -10,9 +10,7 @@
 
 Aviation Bears (AVBEAR) is a NFT collection consisting of 100 unique NFTs uploaded onto OpenSea. This script is capable of generating 3125 unique bears, but due to price restrictions the number of bears available is 100. The NFTs are currently uploaded onto the Rinkeby chain using the Hashlips art engine. 
 
-Buy an AVBEAR 🐻:
-
-[OpenSea]([https://www.youtube.com/channel/UC1LV4_VQGBJHTJjEWUmy8nA](https://testnets.opensea.io/collection/aviation-bears))
+<h2 align="center"><a href="https://testnets.opensea.io/collection/aviation-bears" target="_blank">🐻 Buy an AVBEAR on OpenSea 🐻</a></h2>
 
 
 ## Installation and Scripts 🛠️
