@@ -16,7 +16,7 @@ Aviation Bears (AVBEAR) is a NFT collection consisting of 100 unique NFTs upload
 ## Installation and Scripts 🛠️
 
 ```sh
-git clone [https://github.com/HashLips/hashlips_art_engine.git](https://github.com/angelina-tsuboi/AVBEAR_NFT_Generation.git)
+git clone https://github.com/angelina-tsuboi/AVBEAR_NFT_Generation.git
 ```
 
 Go to the root of your folder and run this command if you have yarn installed.
@@ -30,3 +30,29 @@ Alternatively you can run this command if you have node installed.
 ```sh
 npm install
 ```
+
+### Scripts 
+To generate AVBEARs, execute the following command sequentially inside the root directory of the project
+#### 1. **main.js**
+```sh
+npm run generate
+```
+Generates artwork and json files given layers inside layers folder and rarity of each item
+
+#### 2. **uploadFiles.js**
+```sh
+node utils/nftport/uploadFiles.js
+```
+Uploads each artwork inside build directory to IPFS, and updates the respective JSON file with the IPFS URL
+
+#### 3. **uploadMetadata.js**
+```sh
+node utils/nftport/uploadMetadata.js
+```
+Iterates through JSON files inside build directory, and updates metadata (ie. NFT custom fields)
+
+#### 4. **mint.js**
+```sh
+node utils/nftport/mint.js
+```
+Mints each NFT using NFTPort, and uploads NFT information (ie. TXN) to JSON file in build directory
